@@ -1,0 +1,16 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="crm_claim_services_certificate_form">
+            <field name="name">CRM - Claims Form</field>
+            <field name="model">crm.claim</field>
+	    <field name="inherit_id" ref="crm_claim_sale_services.crm_claim_services_form" />
+            <field name="arch" type="xml">
+		<field name="claim_action" position="after">
+                    <button name="%(action_authorize_giftcard)d" type="action" string="Gift Certificates" />
+		</field>
+
+	    </field>
+	</record>
+
+    </data>
+</openerp>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="authorize_giftcard_form" model="ir.ui.view">
+            <field name="name">Authorize Payment Form</field>
+            <field name="model">sale.authorize.giftcard</field>
+            <field name="arch" type="xml">
+                <form string="">
+		    <field name="sale" invisible="1"/>
+		    <field name="invoice" invisible="1" />
+		    <field name="crm_claim" invisible="1" />
+		    <group string="Base Details" >
+			<field name="store_id" />
+			<field name="action" />
+		        <field name="code" attrs="{'invisible': [('action', 'in', [False, 'create_balance'])]}"/>
+			<field name="balance" attrs="{'invisible': [('action', 'not in', ['redeem_balance', 'create_balance'])]}"/>
+		    </group>
+		    <group>
+		    </group>
+		    <group string="Certificate Details" attrs="{'invisible': [('action', '!=', 'create_balance')]}">
+			<field name="add_sale_charge" attrs="{'invisible': [('sale', '=', False)]}"/>
+			<field name="add_invoice_charge" attrs="{'invisible': [('invoice', '=', False)]}"/>
+			<field name="expire_date" />
+			<field name="sender_name" />
+			<field name="recipient_name" />
+			<field name="recipient_email" />
+			<newline/>
+			<field name="recipient_message" />
+			<newline/>
+			<field name="comments" />
+			<field name="qty" invisible="1"/>
+		    </group>
+		    <group string="Actions">
+			<button name="check_card_balance" type="object" string="Check Card Balance" attrs="{'invisible': [('action', '!=', 'check_balance')]}"/>
+			<button name="process_request" type="object" string="Prcess Request" attrs="{'invisible': [('action', 'not in', ['create_balance', 'redeem_balance'])]}" />
+		    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_authorize_giftcard" model="ir.actions.act_window">
+            <field name="name">Authorize Gift Card</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.authorize.giftcard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="authorize_giftcard_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

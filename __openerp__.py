@@ -7,7 +7,12 @@
     'website': 'https://www.gcotech.com',
     'description': """ 
     """,
-    'data': ['views/sale.xml',
+    'data': [
+		'wizard/card_functions.xml',
+		'views/invoice.xml',
+		'views/sale.xml', 
+		'views/claim.xml',
+		'views/mage.xml',
     ],
     'test': [
     ],

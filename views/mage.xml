@@ -1,0 +1,14 @@
+<openerp>
+    <data>
+        <record id="view_mage_setup_card_form" model="ir.ui.view">
+            <field name="name">Mage Setup Card Form</field>
+            <field name="model">mage.setup</field>
+	    <field name="inherit_id" ref="mage2odoo.view_mage_setup_form" />
+            <field name="arch" type="xml">
+		<group string="Products" position="inside" >
+		    <field name="gift_product" />
+		</group>
+	    </field>
+	</record>
+    </data>
+</openerp>

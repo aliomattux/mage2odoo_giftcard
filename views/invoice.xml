@@ -1,0 +1,19 @@
+<openerp>
+    <data>
+        <record id="card_invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form.card</field>
+            <field name="model">account.invoice</field>
+	    <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+		<field name="move_id" position="after">
+		    <button name="%(action_authorize_giftcard)d" type="action" string="Redeem Certificate" />
+		</field>
+                <xpath expr="/form/sheet/notebook/page/field/tree/field[@name='product_id']" position="before">
+			<field name="linked_certificate" invisible="True" />
+			<field name="certificate_number" invisible="1" />
+			<button name="cancel_certificate" type="object" icon="terp-dialog-close" help="Cancel Action" attrs="{'invisible': [('linked_certificate', '=', False)]}"/>
+                </xpath>
+	    </field>
+	</record>
+    </data>
+</openerp>
